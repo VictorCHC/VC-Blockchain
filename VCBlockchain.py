@@ -16,7 +16,6 @@ a self-identifying hash. Each block's hash will be a cryptographic hash of the
 block's index, timestamp data, and the hash of the previous block's hash.
 The data can be anything you want"""
 
-
 class Block:
         
     def __init__(self, index, timestamp, data, previous_hash):
@@ -35,6 +34,7 @@ class Block:
         return sha.hexdigest()
 
 
+# Genesis Block
 """A genesis block is a special block which is the first block in the chain.
 The block index is 0 and it has an arbitrary data value and an arbitrary value 
 in the “previous hash” parameter"""
@@ -44,14 +44,23 @@ def create_genesis_block():
     return Block(0, date.datetime.now(), "Genesis Block", "0")
     
 
+# Succeeding blocks in the chain
+"""After creating a genesis block a function is needed to generate succeeding
+blocks in the blockchain. This function will take the previous block in the
+chain as a parameter, create the data for the block to be generated, and return
+the new block with its appropriate data. When new blocks has information from
+previous blocks, the integrity of the blockchain increases with each new block.
+This cryptographic chain makes it difficult for outside parties to alter 
+previous records in the chain."""
+
+def next_block(last_block):
+    """Takes previous block in the chain as a parameter, create the data for 
+    the block to be generated, and return the new block with its appropriate 
+    data"""
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    this_index = last_block.index + 1
+    this_timestamp = date.datetime.now()
+    this_data = "Block number " + str(this_index)
+    this_hash = last_block.hash
+    return Block(this_index, this_timestamp, this_data, this_hash)
 
