@@ -8,13 +8,15 @@ Reference:
     https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b
 """
 import hashlib as hasher
+import datetime as date
 
+#Basic block structure
 """This blockchain stores a timestamp and an index. Each block will have
 a self-identifying hash. Each block's hash will be a cryptographic hash of the
 block's index, timestamp data, and the hash of the previous block's hash.
 The data can be anything you want"""
 
-#Basic block structure
+
 class Block:
         
     def __init__(self, index, timestamp, data, previous_hash):
@@ -36,4 +38,20 @@ class Block:
 """A genesis block is a special block which is the first block in the chain.
 The block index is 0 and it has an arbitrary data value and an arbitrary value 
 in the “previous hash” parameter"""
+
+def create_genesis_block():
+    """Manually construct a block with index zero and abritrary previous hash"""
+    return Block(0, date.datetime.now(), "Genesis Block", "0")
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
