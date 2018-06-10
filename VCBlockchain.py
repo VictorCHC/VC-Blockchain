@@ -65,3 +65,24 @@ def next_block(last_block):
     
     return Block(this_index, this_timestamp, this_data, this_hash)
 
+
+# Creating the blockchain
+"""The blockchain will be a simple Python list. Element zero in the list will
+be the genesis block. We will make the chain only 50 blocks long with a
+for loop."""
+
+# Create the blockchain and add the genesis block
+blockchain = [create_genesis_block()]
+previous_block = blockchain[0]
+
+# Number of blocks to add AFTER the genesis block
+num_of_blocks_to_add = 49
+
+# Add blocks to the chain
+for i in range(num_of_blocks_to_add):
+    block_to_add = next_block(previous_block)
+    blockchain.append(block_to_add)
+    previous_block = block_to_add
+    
+    print ("Block #{} has been added to the blockchain!").format(block_to_add.index)
+    print ("Hash: {}\n").format(block_to_add.hash)
