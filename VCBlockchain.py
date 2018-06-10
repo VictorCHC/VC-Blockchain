@@ -27,10 +27,10 @@ class Block:
     
     def hash_block(self):
         sha = hasher.sha256()
-        sha.update(str(self.index) +
+        sha.update((str(self.index) +
                    str(self.timestamp) +
                    str(self.data) +
-                   str(self.previous_hash))
+                   str(self.previous_hash)).encode())
         return sha.hexdigest()
 
 
@@ -62,5 +62,6 @@ def next_block(last_block):
     this_timestamp = date.datetime.now()
     this_data = "Block number " + str(this_index)
     this_hash = last_block.hash
+    
     return Block(this_index, this_timestamp, this_data, this_hash)
 
