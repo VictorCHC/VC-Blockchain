@@ -31,4 +31,9 @@ class Block:
                    str(self.data) +
                    str(self.previous_hash))
         return sha.hexdigest()
-    
+
+
+"""A genesis block is a special block which is the first block in the chain.
+The block index is 0 and it has an arbitrary data value and an arbitrary value 
+in the “previous hash” parameter"""
+
