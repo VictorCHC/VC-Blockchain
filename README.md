@@ -1,2 +1,2 @@
 # VC-Blockchain
-Blockchain experiment
+Blockchain experiment to understand how blockchains work
