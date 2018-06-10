@@ -14,11 +14,21 @@ a self-identifying hash. Each block's hash will be a cryptographic hash of the
 block's index, timestamp data, and the hash of the previous block's hash.
 The data can be anything you want"""
 
+#Basic block structure
 class Block:
+        
     def __init__(self, index, timestamp, data, previous_hash):
         self.index = index
         self.timestamp = timestamp,
         self.data = data
         self.previous_hash = previous_hash
         self.hash = self.hash_block()
-        
+    
+    def hash_block(self):
+        sha = hasher.sha256()
+        sha.update(str(self.index) +
+                   str(self.timestamp) +
+                   str(self.data) +
+                   str(self.previous_hash))
+        return sha.hexdigest()
+    
